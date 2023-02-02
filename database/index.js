@@ -30,6 +30,12 @@ let save = (userRepoObj) => {
       console.log(repo.full_name);
     }
   })
-}
+};
+
+let get = (criteria, length) => {
+  var query = Repo.find().sort({[criteria]: -1}).limit(length);
+  return query;
+};
 
 module.exports.save = save;
+module.exports.get = get;
