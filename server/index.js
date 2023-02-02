@@ -1,5 +1,6 @@
 const express = require('express');
 const github = require('../helpers/github.js');
+const database = require('../database');
 
 let app = express();
 
@@ -25,7 +26,10 @@ app.post('/repos', function (req, res) {
 
   github.getReposByUsername(req.body.username)
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
+      response.data.forEach((repo) => {
+        database.save(repo);
+      })
     })
     .catch((error) => {
       console.log(error);
