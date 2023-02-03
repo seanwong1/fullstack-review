@@ -12,12 +12,20 @@ const App = () => {
     console.log(`${term} was searched`);
     // $.post('http://localhost:1128/repos', JSON.stringify(term), 'json');
     $.ajax({
-      url: 'http://localhost:1128/repos',
+      url: '/repos',
       type: 'POST',
       data: {
         username: term
       }
+    });
+
+    $.ajax({
+      url: '/repos',
+      type: 'GET'
     })
+      .done((response) => {
+        setRepos(response);
+      });
   }
 
   return (

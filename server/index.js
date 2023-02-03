@@ -7,16 +7,16 @@ let app = express();
 // app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
-// TODO - your code here!
 // Set up static file service for files in the `client/dist` directory.
 // Webpack is configured to generate files in that directory and
 // this server must serve those files when requested.
+app.use(express.static('client/dist'));
 
 app.post('/repos', function (req, res) {
   // This route should take the github username provided
