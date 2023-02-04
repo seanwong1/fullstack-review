@@ -7,7 +7,7 @@ const RepoList = ({ repos }) => {
       <h4> There are {repos.length} repos. </h4>
       {repos.map((repo) => {
         return (
-          <Repos repo={repo} />
+          <Repos key={repo.full_name} repo={repo} />
         );
       })}
     </div>

@@ -8,6 +8,16 @@ const App = () => {
 
   const [repos, setRepos] = useState([]);
 
+  const retrieve = () => {
+    $.ajax({
+      url: '/repos',
+      type: 'GET'
+    })
+      .done((response) => {
+        setRepos(response);
+      });
+  }
+
   const search = (term) => {
     console.log(`${term} was searched`);
     // $.post('http://localhost:1128/repos', JSON.stringify(term), 'json');
@@ -17,16 +27,13 @@ const App = () => {
       data: {
         username: term
       }
-    });
-
-    $.ajax({
-      url: '/repos',
-      type: 'GET'
     })
-      .done((response) => {
-        setRepos(response);
+      .done(() => {
+        retrieve();
       });
   }
+
+  retrieve();
 
   return (
     <div>
