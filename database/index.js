@@ -23,6 +23,7 @@ let save = (userRepoObj) => {
     forks_count: userRepoObj.forks_count
   });
 
+  // propagate errors back out
   repo.save((err, repo) => {
     if (err) {
       console.log(err);

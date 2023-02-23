@@ -33,6 +33,7 @@ const App = () => {
       });
   }
 
+  // react useEffect
   retrieve();
 
   return (
